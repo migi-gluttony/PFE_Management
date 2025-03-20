@@ -5,16 +5,17 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 @Entity
 @Table(name = "utilisateur")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Utilisateur implements UserDetails {
 
     @Id
@@ -23,9 +24,16 @@ public class Utilisateur implements UserDetails {
 
     private String nom;
     private String prenom;
+    
+    @Column(unique = true)
     private String email;
+    
+    @Column(unique = true)
     private String cin;
+    
+    @Column(unique = true)
     private String cne;
+    
     private Date dateNaissance;
     private String motDePasse;
 
@@ -34,12 +42,12 @@ public class Utilisateur implements UserDetails {
 
     // Enum for role type
     public enum Role {
-        ADMIN, CHEF_DE_DEPARTEMENT, ETUDIANT, ENCADRANT
+        ADMIN, CHEF_DE_DEPARTEMENT, ETUDIANT, ENCADRANT, JURY
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of((GrantedAuthority) () -> role.name());
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override

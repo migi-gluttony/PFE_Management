@@ -11,8 +11,8 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur,Long>{
     Optional<Utilisateur> findByEmail(String email);
     Optional<Utilisateur> findByCni(String cni);
     Optional<Utilisateur> findByCne(String cne);
-    Optional<Utilisateur> findByEmailAndDateNaissanceAndCin(String email, Date dateNaissance, String cni);
+    Optional<Utilisateur> findByEmailAndDateNaissanceAndCni(String email, Date dateNaissance, String cni);
 Optional<Utilisateur> findByEmailAndDateNaissanceAndCne(String email, Date dateNaissance, String cne);
-boolean existsByCin(String cni);
+boolean existsByCni(String cni);
 boolean existsByCne(String cne);
 }

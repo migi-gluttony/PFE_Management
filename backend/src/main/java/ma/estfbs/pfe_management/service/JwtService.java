@@ -94,4 +94,16 @@ public class JwtService {
     byte[] keyBytes = Decoders.BASE64.decode(secretKey);
     return Keys.hmacShaKeyFor(keyBytes);
   }
+  /**
+ * Generates a token specifically for password reset with a short expiration time
+ */
+public String generatePasswordResetToken(String email) {
+    return Jwts
+            .builder()
+            .setSubject(email)
+            .setIssuedAt(new Date(System.currentTimeMillis()))
+            .setExpiration(new Date(System.currentTimeMillis() + 900000)) // 15 minutes
+            .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+            .compact();
+}
 }

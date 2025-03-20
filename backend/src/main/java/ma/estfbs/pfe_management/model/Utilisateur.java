@@ -29,7 +29,7 @@ public class Utilisateur implements UserDetails {
     private String email;
     
     @Column(unique = true)
-    private String cin;
+    private String cni;
     
     @Column(unique = true)
     private String cne;

@@ -1,5 +1,6 @@
 package ma.estfbs.pfe_management.repository;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,4 +9,10 @@ import ma.estfbs.pfe_management.model.Utilisateur;
 
 public interface UtilisateurRepository extends JpaRepository<Utilisateur,Long>{
     Optional<Utilisateur> findByEmail(String email);
+    Optional<Utilisateur> findByCni(String cni);
+    Optional<Utilisateur> findByCne(String cne);
+    Optional<Utilisateur> findByEmailAndDateNaissanceAndCin(String email, Date dateNaissance, String cni);
+Optional<Utilisateur> findByEmailAndDateNaissanceAndCne(String email, Date dateNaissance, String cne);
+boolean existsByCin(String cni);
+boolean existsByCne(String cne);
 }

@@ -10,7 +10,7 @@ public class RegisterRequest {
     private String nom;
     private String prenom;
     private String email;
-    private String cin;
+    private String cni;
     private String cne;
     private Date dateNaissance;
     private String motDePasse;

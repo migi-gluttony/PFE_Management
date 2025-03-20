@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PfeManagementApplication<pfe_management>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "ma.estfbs.pfe_management.PfeManagementApplication",
+            "projectName": "pfe_management",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

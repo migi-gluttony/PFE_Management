@@ -22,6 +22,10 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse register(RegisterRequest registerRequest) {
+        // Check for existing email
+    if (utilisateurRepository.findByEmail(registerRequest.getEmail()).isPresent()) {
+        throw new RuntimeException("Email already registered");
+    }
         var utilisateur = Utilisateur.builder()
         .nom(registerRequest.getNom())
         .prenom(registerRequest.getPrenom())
